@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">扫码</string>
+    <string name="scan_text">请将二维码/条形码放入取景框内</string>
+</resources>

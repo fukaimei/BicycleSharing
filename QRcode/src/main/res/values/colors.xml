@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#252D30</color>
+    <color name="colorPrimaryDark">#252D30</color>
+    <color name="colorAccent">#252D30</color>
+
+    <color name="black">#ff000000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_mask">#60000000</color>
+
+</resources>
