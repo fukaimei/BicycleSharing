@@ -16,13 +16,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".FindScanActivity"/>
+        <activity android:name=".FindScanActivity"
+            android:screenOrientation="portrait"/>
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.MAIN" />-->
                 <!--<category android:name="android.intent.category.LAUNCHER" />-->
             <!--</intent-filter>-->
         <!--</activity>-->
-        <activity android:name=".ScanResultActivity"/>
+        <activity android:name=".ScanResultActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

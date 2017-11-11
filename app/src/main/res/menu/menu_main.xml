@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.zhangyi.baidumap_test.MainActivity">
+    tools:context=".TakeTaxActivity">
     <item
         android:id="@+id/id_map_common"
         android:title="普通地图"
@@ -30,5 +30,4 @@
         android:id="@+id/id_map_model_compass"
         android:title="罗盘模式"
         app:showAsAction="never" />
-
 </menu>

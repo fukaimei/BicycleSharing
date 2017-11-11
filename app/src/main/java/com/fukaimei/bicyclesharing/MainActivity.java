@@ -1,14 +1,14 @@
 package com.fukaimei.bicyclesharing;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v7.app.ActionBarActivity;
-import android.view.Menu;
+import android.support.v7.widget.PopupMenu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +23,7 @@ import com.baidu.mapapi.SDKInitializer;
 import com.baidu.mapapi.map.BaiduMap;
 import com.baidu.mapapi.map.BitmapDescriptor;
 import com.baidu.mapapi.map.BitmapDescriptorFactory;
+import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
@@ -32,7 +33,7 @@ import com.baidu.mapapi.model.LatLng;
 import com.fukaimei.bicyclesharing.util.Utils;
 import com.fukaimei.scanqrcodetest.FindScanActivity;
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends Activity {
 
     private static final int BAIDU_READ_PHONE_STATE = 100;
 
@@ -48,6 +49,8 @@ public class MainActivity extends ActionBarActivity {
     private float mCurrentX;
 
     private ImageButton mGetMylocationBN;
+
+    PopupMenu popup = null;
 
     //自定义图标
     private BitmapDescriptor mIconLocation;
@@ -80,6 +83,11 @@ public class MainActivity extends ActionBarActivity {
         //根据给定增量缩放地图级别
         MapStatusUpdate msu = MapStatusUpdateFactory.zoomTo(18.0f);
         mBaiduMap.setMapStatus(msu);
+        MapStatus mMapStatus;//地图当前状态
+        MapStatusUpdate mMapStatusUpdate;//地图将要变化成的状态
+        mMapStatus = new MapStatus.Builder().overlook(-45).build();
+        mMapStatusUpdate = MapStatusUpdateFactory.newMapStatus(mMapStatus);
+        mBaiduMap.setMapStatus(mMapStatusUpdate);
         mGetMylocationBN = (ImageButton) findViewById(R.id.id_bn_getMyLocation);
         mGetMylocationBN.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -178,57 +186,58 @@ public class MainActivity extends ActionBarActivity {
         mMapView.onDestroy();
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
     public void getMyLocation() {
         LatLng latLng = new LatLng(mLatitude, mLongitude);
         MapStatusUpdate msu = MapStatusUpdateFactory.newLatLng(latLng);
         mBaiduMap.setMapStatus(msu);
     }
 
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.id_map_common:
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
-                break;
-            case R.id.id_map_site:
-                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
-                break;
-            case R.id.id_map_traffic:
-                if (mBaiduMap.isTrafficEnabled()) {
-                    mBaiduMap.setTrafficEnabled(false);
-                    item.setTitle("实时交通(off)");
-                } else {
-                    mBaiduMap.setTrafficEnabled(true);
-                    item.setTitle("实时交通(on)");
-                }
-                break;
-            case R.id.id_map_mlocation:
-                getMyLocation();
-                break;
-            case R.id.id_map_model_common:
-                //普通模式
-                locationMode = MyLocationConfiguration.LocationMode.NORMAL;
-                break;
-            case R.id.id_map_model_following:
-                //跟随模式
-                locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
-                break;
-            case R.id.id_map_model_compass:
-                //罗盘模式
-                locationMode = MyLocationConfiguration.LocationMode.COMPASS;
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void onPopupMenuClick(View v) {
+        // 创建PopupMenu对象
+        popup = new PopupMenu(this, v);
+        // 将R.menu.menu_main菜单资源加载到popup菜单中
+        getMenuInflater().inflate(R.menu.menu_main, popup.getMenu());
+        // 为popup菜单的菜单项单击事件绑定事件监听器
+        popup.setOnMenuItemClickListener(
+                new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()) {
+                            case R.id.id_map_common:
+                                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_NORMAL);
+                                break;
+                            case R.id.id_map_site:
+                                mBaiduMap.setMapType(BaiduMap.MAP_TYPE_SATELLITE);
+                                break;
+                            case R.id.id_map_traffic:
+                                if (mBaiduMap.isTrafficEnabled()) {
+                                    mBaiduMap.setTrafficEnabled(false);
+                                    item.setTitle("实时交通(off)");
+                                } else {
+                                    mBaiduMap.setTrafficEnabled(true);
+                                    item.setTitle("实时交通(on)");
+                                }
+                                break;
+                            case R.id.id_map_mlocation:
+                                getMyLocation();
+                                break;
+                            case R.id.id_map_model_common:
+                                //普通模式
+                                locationMode = MyLocationConfiguration.LocationMode.NORMAL;
+                                break;
+                            case R.id.id_map_model_following:
+                                //跟随模式
+                                locationMode = MyLocationConfiguration.LocationMode.FOLLOWING;
+                                break;
+                            case R.id.id_map_model_compass:
+                                //罗盘模式
+                                locationMode = MyLocationConfiguration.LocationMode.COMPASS;
+                                break;
+                        }
+                        return true;
+                    }
+                });
+        popup.show();
     }
 
     /**
