@@ -27,8 +27,10 @@ import com.baidu.mapapi.map.MapStatus;
 import com.baidu.mapapi.map.MapStatusUpdate;
 import com.baidu.mapapi.map.MapStatusUpdateFactory;
 import com.baidu.mapapi.map.MapView;
+import com.baidu.mapapi.map.MarkerOptions;
 import com.baidu.mapapi.map.MyLocationConfiguration;
 import com.baidu.mapapi.map.MyLocationData;
+import com.baidu.mapapi.map.OverlayOptions;
 import com.baidu.mapapi.model.LatLng;
 import com.fukaimei.bicyclesharing.util.Utils;
 import com.fukaimei.scanqrcodetest.FindScanActivity;
@@ -291,6 +293,129 @@ public class MainActivity extends Activity {
                 mBaiduMap.setMapStatus(msu);
                 isFirstIn = false;
                 Utils.showToast2(context, "亲，您当前的位置为：" + bdLocation.getAddrStr());
+
+                //定义Maker坐标点
+                LatLng point = new LatLng(mLatitude + 0.00056, mLongitude);
+                //构建Marker图标
+                BitmapDescriptor bitmap = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option = new MarkerOptions()
+                        .position(point)
+                        .icon(bitmap);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option);
+                //定义Maker坐标点
+                LatLng point1 = new LatLng(mLatitude, mLongitude + 0.0003);
+                //构建Marker图标
+                BitmapDescriptor bitmap1 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option1 = new MarkerOptions()
+                        .position(point1)
+                        .icon(bitmap1);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option1);
+                //定义Maker坐标点
+                LatLng point2 = new LatLng(mLatitude + 0.0005, mLongitude + 0.001);
+                //构建Marker图标
+                BitmapDescriptor bitmap2 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option2 = new MarkerOptions()
+                        .position(point2)
+                        .icon(bitmap2);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option2);
+                //定义Maker坐标点
+                LatLng point3 = new LatLng(mLatitude + 0.0003, mLongitude + 0.0001);
+                //构建Marker图标
+                BitmapDescriptor bitmap3 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option3 = new MarkerOptions()
+                        .position(point3)
+                        .icon(bitmap3);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option3);
+                //定义Maker坐标点
+                LatLng point4 = new LatLng(mLatitude + 0.0006, mLongitude);
+                //构建Marker图标
+                BitmapDescriptor bitmap4 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option4 = new MarkerOptions()
+                        .position(point4)
+                        .icon(bitmap4);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option4);
+                //定义Maker坐标点
+                LatLng point5 = new LatLng(mLatitude, mLongitude + 0.0004);
+                //构建Marker图标
+                BitmapDescriptor bitmap5 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option5 = new MarkerOptions()
+                        .position(point5)
+                        .icon(bitmap5);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option5);
+
+                //定义Maker坐标点
+                LatLng point6 = new LatLng(mLatitude, mLongitude - 0.0008);
+                //构建Marker图标
+                BitmapDescriptor bitmap6 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option6 = new MarkerOptions()
+                        .position(point6)
+                        .icon(bitmap6);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option1);
+                //定义Maker坐标点
+                LatLng point7 = new LatLng(mLatitude - 0.0005, mLongitude + 0.0004);
+                //构建Marker图标
+                BitmapDescriptor bitmap7 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option7 = new MarkerOptions()
+                        .position(point7)
+                        .icon(bitmap7);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option7);
+                //定义Maker坐标点
+                LatLng point8 = new LatLng(mLatitude - 0.0003, mLongitude - 0.0005);
+                //构建Marker图标
+                BitmapDescriptor bitmap8 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option8 = new MarkerOptions()
+                        .position(point8)
+                        .icon(bitmap8);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option8);
+                //定义Maker坐标点
+                LatLng point9 = new LatLng(mLatitude - 0.0003, mLongitude);
+                //构建Marker图标
+                BitmapDescriptor bitmap9 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option9 = new MarkerOptions()
+                        .position(point9)
+                        .icon(bitmap9);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option9);
+                //定义Maker坐标点
+                LatLng point10 = new LatLng(mLatitude, mLongitude - 0.0003);
+                //构建Marker图标
+                BitmapDescriptor bitmap10 = BitmapDescriptorFactory
+                        .fromResource(R.drawable.car_small);
+                //构建MarkerOption，用于在地图上添加Marker
+                OverlayOptions option10 = new MarkerOptions()
+                        .position(point10)
+                        .icon(bitmap10);
+                //在地图上添加Marker，并显示
+                mBaiduMap.addOverlay(option10);
             }
         }
     }
