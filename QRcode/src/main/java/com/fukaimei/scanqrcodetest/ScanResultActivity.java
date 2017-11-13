@@ -12,7 +12,7 @@ public class ScanResultActivity extends AppCompatActivity {
         setContentView(R.layout.activity_scan_result);
         TextView tv_result = (TextView) findViewById(R.id.tv_result);
         String result = getIntent().getStringExtra("result");
-        tv_result.setText("扫码结果为：" + result);
+        tv_result.setText("开锁密码为：" + result);
     }
 
 }

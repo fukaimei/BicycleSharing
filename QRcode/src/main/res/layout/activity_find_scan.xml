@@ -19,7 +19,7 @@
         android:layout_alignParentTop="true"
         android:background="@drawable/bg_alpha"
         android:gravity="center"
-        android:text="扫描二维码/条形码"
+        android:text="扫码开锁"
         android:textColor="#ffffffff"
         android:textSize="20sp" />
 
